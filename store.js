@@ -54,6 +54,16 @@ function statement(customer, movies) {
                 }
                 break;
         }
+        return thisAmount;
+    }
+
+    function calculateFrequentRenterPoints() {
+        let totalFrequentRenterPoints = 0;
+        //add frequent renter points
+        totalFrequentRenterPoints++;
+        // add bonus for a two day new release rental
+        if (movie.code === "new" && rental.days > 2) totalFrequentRenterPoints++;
+        return totalFrequentRenterPoints;
     }
     
 }
