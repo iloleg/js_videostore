@@ -5,7 +5,7 @@ function statement(customer, movies) {
     let totalFrequentRenterPoints = 0;
     let result = `Rental Record for ${customer.name}\n`;
     for (let rental of customer.rentals) {
-        let movie = movies[rental.movieID]
+        let movie = movieFor(rental);
         let thisAmount = 0;
 
         // determine amount for each movie
@@ -44,6 +44,11 @@ function statement(customer, movies) {
     result += `You earned ${totalFrequentRenterPoints} frequent renter points\n`;
 
     return result;
+    
+    function movieFor(rental) {
+        return  movies[rental.movieID];
+    }
+    
 }
 
 let customer = {
