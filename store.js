@@ -88,7 +88,6 @@ function htmlStatement(customerArg, movies) {
     const movie = (aRental) => movieFor(aRental);
     const rentalAmount = (aRental) => getAmount(aRental);
 
-
     let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
     result += "<table>\n";
     for (let rental of customer.rentals) {
