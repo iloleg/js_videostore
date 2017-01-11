@@ -79,18 +79,11 @@ function txtStatement(customer) {
 }
 
 function htmlStatement(customer) {
-    const amount = () =
->
-    getTotalAmount(customer);
-    const frequentRenterPoints = () =
->
-    getTotalFrequentRenterPoints(customer);
-    const movie = (aRental) =
->
-    movieFor(aRental);
-    const rentalAmount = (aRental) =
->
-    getAmount(aRental);
+    const amount = () => getTotalAmount(customer);
+    const frequentRenterPoints = () => getTotalFrequentRenterPoints(customer);
+    const movie = (aRental) => movieFor(aRental);
+    const rentalAmount = (aRental) => getAmount(aRental);
+
 
     let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
     result += "<table>\n";
