@@ -3,30 +3,7 @@ var Customer = require('./customer');
 
 
 
-function getAmount(rental) {
-    let movie = rental.movie;
-    let amount = 0;
-    // determine amount for each movie
-    switch (movie.code) {
-        case "regular":
-            amount = 2;
-            if (rental.days > 2) {
-                amount += (rental.days - 2) * 1.5;
-            }
-            break;
-        case "new":
-            amount = rental.days * 3;
-            break;
-        case "childrens":
-            amount = 1.5;
-            if (rental.days > 3) {
-                amount += (rental.days - 3) * 1.5;
-            }
-            break;
-    }
 
-    return amount;
-}
 
 function getTotalFrequentRenterPoints(customer) {
     let totalFrequentRenterPoints = 0;
@@ -40,7 +17,7 @@ function getTotalFrequentRenterPoints(customer) {
 function getTotalAmount(customer) {
     let totalAmount = 0;
     for (let rental of customer.rentals) {
-        totalAmount += getAmount(rental);
+        totalAmount += rental.amount;
     }
 
     return totalAmount;
@@ -56,7 +33,7 @@ function txtStatement(customerArg, movies) {
     function buildBody() {
         let statement = '';
         for (let rental of customer.rentals) {
-            statement += `\t${rental.movie.title}\t${getAmount(rental)}\n`;
+            statement += `\t${rental.movie.title}\t${rental.amount}\n`;
         }
 
         return statement;
@@ -84,8 +61,9 @@ function htmlStatement(customerArg, movies) {
 
     let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
     result += "<table>\n";
+
     for (let rental of customer.rentals) {
-        result += `  <tr><td>${rental.movie.title}</td><td>${rentalAmount(rental)}</td></tr>\n`;
+        result += `  <tr><td>${rental.movie.title}</td><td>${rental.amount}</td></tr>\n`;
     }
     result += "</table>\n";
     result += `<p>Amount owed is <em>${amount()}</em></p>\n`;
