@@ -1,6 +1,7 @@
 /**
  * Created by oleg on 11/01/2017.
  */
+var Rental = require('./rental');
 class Customer{
     constructor(data){
         this._data = data;
@@ -13,15 +14,5 @@ class Customer{
             .map(rental => new Rental(rental));
     }
 }
-class Rental {
-    constructor(data){
-        this._data = data;
-    }
-    get movieID(){
-        return this._data.movieID;
-    }
-    get days(){
-        return this._data.days;
-    }
-}
+
 module.exports = Customer;
