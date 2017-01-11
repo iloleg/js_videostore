@@ -32,10 +32,11 @@ function txtStatement(customerArg, movies) {
 
 function htmlStatement(customerArg, movies) {
     const customer = new Customer(customerArg, movies);
+
     const amount = () => customer.totalAmount;
     const frequentRenterPoints = () => customer.totalFrequentRenterPoints;
-    const movie = (aRental) => movieFor(aRental);
-    const rentalAmount = (aRental) => getAmount(aRental);
+    const movie = (aRental) => aRental.movie;
+    const rentalAmount = (aRental) => aRental.amount;
 
     let result = `<h1>Rental Record for <em>${customer.name}</em></h1>\n`;
     result += "<table>\n";
