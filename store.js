@@ -28,14 +28,10 @@ function getAmount(rental) {
     return amount;
 }
 
-function getFrequentRenterPoints(rental) {
-    return rental.frequentRenterPoints;
-}
-
 function getTotalFrequentRenterPoints(customer) {
     let totalFrequentRenterPoints = 0;
     for (let rental of customer.rentals) {
-        totalFrequentRenterPoints += getFrequentRenterPoints(rental);
+        totalFrequentRenterPoints += rental.frequentRenterPoints;
     }
 
     return totalFrequentRenterPoints;
